@@ -1,0 +1,60 @@
+build:
+  gpu: true
+  python_version: "3.10"
+  cuda: "11.8"
+  system_packages:
+    - "build-essential"
+    - "libegl1-mesa-dev"
+    - "libgl1-mesa-dev"
+    - "libgles2-mesa-dev"
+    - "libglib2.0-0"
+    - "libsm6"
+    - "libxext6"
+    - "libxrender1"
+    - "python3.10-dev"
+    - "zip"
+    - "xvfb"
+  python_packages:
+    - "rembg[gpu,cli]"
+    - "trimesh==4.0.2"
+    - "tqdm"
+    - "rich"
+    - "ninja"
+    - "numpy"
+    - "pandas"
+    - "scipy"
+    - "scikit-learn"
+    - "matplotlib"
+    - "opencv-python"
+    - "imageio"
+    - "imageio-ffmpeg"
+    - "omegaconf"
+    - "einops"
+    - "plyfile"
+    - "pygltflib"
+    - "dearpygui"
+    - "huggingface_hub"
+    - "diffusers"
+    - "accelerate"
+    - "transformers"
+    - "xatlas"
+    - "PyMCubes"
+    - "pymeshlab"
+    - "gradio"
+    - "torch-ema" 
+    - "tensorboardX"
+    - "torch==2.0.0"
+    - "torchvision==0.15.0"
+    - "torchaudio==2.0.0"
+    - "pydantic<2.0.0"
+  run:
+    - pip install -q einops plyfile dearpygui huggingface_hub diffusers accelerate transformers xatlas trimesh PyMCubes pymeshlab rembg[gpu,cli] omegaconf ninja
+    - pip install -q https://github.com/camenduru/diff-gaussian-rasterization/releases/download/v1.0/diff_gaussian_rasterization-0.0.0-cp310-cp310-linux_x86_64.1.whl
+    - pip install -q https://github.com/camenduru/diff-gaussian-rasterization/releases/download/v1.0/simple_knn-0.0.0-cp310-cp310-linux_x86_64.1.whl
+    - pip install -q https://github.com/camenduru/diff-gaussian-rasterization/releases/download/v1.0/nvdiffrast-0.3.1-py3-none-any.whl
+    - pip install -q https://github.com/camenduru/diff-gaussian-rasterization/releases/download/v1.0/kiui-0.1.8-py3-none-any.whl
+    - pip install -q git+https://github.com/NVlabs/nvdiffrast
+    - pip install -q git+https://github.com/ashawkey/kiuikit
+    - pip install ninja==1.10.2.3
+   
+predict: "predict.py:Predictor"
